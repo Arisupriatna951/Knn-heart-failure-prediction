@@ -386,10 +386,14 @@ Akurasi data training :  0.8596730245231607
 
 ## Deployment
 
+Untuk streamlit terdapat problem, pada saat di import ke github namun dicoba di local berjalan dengan lancar
+berikut saya lampirkan untuk link streamlit yang sudah di updaload ke github dan berikut saya lampirkan juga bukti pengetesan streamlit local 
 
-**---Ini adalah bagian akhir laporan---**
+![](streamlit.png)
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+
+[![image](https://github.com/Arisupriatna951/Knn-heart-failure-prediction/assets/149159655/37698b51-be6c-4f90-bb66-81c24861f433)](https://knn-heart-failure-prediction-npfwvse7fkfm3iwg4eh8rl.streamlit.app/)https://knn-heart-failure-prediction-npfwvse7fkfm3iwg4eh8rl.streamlit.app/
+
+
+
 
