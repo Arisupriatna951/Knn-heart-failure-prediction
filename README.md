@@ -78,26 +78,28 @@ File kaggle.json sudah diupload, langsung saja membuat direktori / folder untuk 
 !cp kaggle.json ~/.kaggle/
 !chmod 600 ~/.kaggle/kaggle.json
 !ls ~/.kaggle
-
-
+```
 
 ### Men Download Dataset
 Untuk persiapan kaggle sudah selesai, kemudian disini saya akan download file kagglenya diantaranya : 
 
+```
 !kaggle datasets download -d fedesoriano/heart-failure-prediction
-
+```
 
 ### Mengextrack file 
 Setelah file kaggle sudah kedownload disini saya akan melakukan ekstrak data dan menyimpan data juga ke dalam direktori heart-failure-prediction
 
+```
 !mkdir heart-failure-prediction
 !unzip heart-failure-prediction.zip -d heart-failure-prediction
 !ls heart-failure-prediction
-
+```
 
 ### Library yang digunakan 
 Kemudian disini saya akan mengimporkan data library yang akan digunakan diantaranya : 
 
+```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -106,6 +108,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+```
 
 ### Menginisialisasi Dataframe
 Disini saya akan Menginisialisasi Dataframe dengan perintah :
