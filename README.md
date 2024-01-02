@@ -211,7 +211,7 @@ scaler = StandardScaler()
 scaler.fit(df.drop('HeartDisease',axis = 1))
 ```
 
-Dibagian ini saya akan melakukan pembagian dataset menjadi dua, yaitu data train set dan data test set dengan printah : 
+Kita akan melakukan preprocessing data pada suatu DataFrame untuk persiapan penggunaan dalam model dengan perintah : 
 
 ```
 scaled_features = scaler.transform(df.drop('HeartDisease',axis = 1))
@@ -219,7 +219,7 @@ df_feat = pd.DataFrame(scaled_features,columns = df.columns[:-1])
 df_feat.head()
 ```
 
-Selanjutnya saya akan membuat sebuah model menggunakan algoritma logisticRegression dengan jumlah iterasi max 5000 dengan perintah : 
+Disini kita akan membagi dataset menjadi data Y dan data X untuk digunakan dalam proses pelatihan dan evaluasi 
 
 ```
 X = df_feat
@@ -227,24 +227,31 @@ y = df['HeartDisease']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=101)
 ```
 
+membuat dan mengecek model (k-NN) pada data Y
+
 ```
 knn = KNeighborsClassifier(n_neighbors = 9)
 knn.fit(X_train,y_train)
 ```
 
+melakukan prediksi menggunakan model k-Nearest Neighbors (k-NN)
 ```
 pred = knn.predict(X_test)
 pred
 ```
 
+Mencetak matriks confusion
 ```
 print(confusion_matrix(y_test,pred))
 ```
 
+Mencetak Report Classification 
 ```
 print(classification_report(y_test,pred))
 ```
 
+
+membuat loop untuk mencoba beberapa nilai n_neighbors pada model k-NN dan mengukur tingkat kesalahan (error rate) untuk setiap nilai
 ```
 error_rate= []
 for i in range(1,40):
@@ -254,6 +261,8 @@ for i in range(1,40):
     error_rate.append(np.mean(pred_i != y_test))
 ```
 
+
+membuat visualisasi tingkat kesalahan (error rate) terhadap nilai n_neighbors pada model k-NN
 ```
 plt.figure(figsize = (10,6))
 plt.plot(range(1,40),error_rate,color = 'blue',linestyle = '--',marker = 'o',markerfacecolor='red',markersize = 10)
@@ -265,8 +274,8 @@ plt.ylabel('Error Rate')
 ![](error.png)
 
 
-Kemudian ditahapan ini saya akan mencoba melakukan prediksi dengan data sample yang paling atas dengan perintah : 
 
+Berikut ini membuat subplot dengan dua jenis plot: Countplot dan Pie Chart, yang menggambarkan distribusi gender dalam suatu dataset
 
 ```
 colors = px.colors.cyclical.Twilight
@@ -301,9 +310,12 @@ fig.update_layout(
 iplot(fig)
 ```
 
-dengan hasil prediksi sebagai berikut :
+dengan hasil sebagai berikut :
 ![](gender.png)
 
+
+
+membuat subplot dengan dua jenis plot: Countplot dan Pie Chart, yang menggambarkan distribusi variabel target 'HeartDisease'
 
 ```
 colors = px.colors.cyclical.Twilight
@@ -337,7 +349,7 @@ fig.update_layout(
                   )
 iplot(fig)
 ```
-dengan hasil prediksi sebagai berikut :
+dengan hasil sebagai berikut :
 
 ![](hd.png)
 
@@ -358,7 +370,7 @@ pickle.dump(model, open(filename, 'wb'))
 
 
 ## Evaluation
-Di tahap Evaluation ini saya akan menggunakan accuracy_score untuk metrik evaluasinya, dengan perintah : 
+Di tahap Evaluation ini saya akan menggunakan matriks confusion untuk masalah prediksi penyakit jantung ini dengan menginputkan gejala gejala yang sedang dirasakan : 
 
 x_train_prediction = model.predict(x_train)
 training_data_accuracy = accuracy_score(x_train_prediction, y_train)
