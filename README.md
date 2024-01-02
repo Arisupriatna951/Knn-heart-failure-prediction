@@ -102,12 +102,20 @@ Kemudian disini saya akan mengimporkan data library yang akan digunakan diantara
 ```
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
-
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import plotly.express as px
+import random
+from plotly import tools
+from plotly.subplots import make_subplots
+from plotly.offline import iplot
+from sklearn import preprocessing
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import datasets, linear_model, metrics
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
 ```
 
 ### Menginisialisasi Dataframe
