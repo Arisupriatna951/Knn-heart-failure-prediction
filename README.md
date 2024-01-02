@@ -203,37 +203,144 @@ plt.show()
 
 
 
-
 ## Modeling
 Ditahap ini saya akan membuat feature dari semua kolom dengan perintah berikut : 
 
-x = df.drop(columns="HeartDisease", axis=1)
-y = df["HeartDisease"]
-
+```
+scaler = StandardScaler()
+scaler.fit(df.drop('HeartDisease',axis = 1))
+```
 
 Dibagian ini saya akan melakukan pembagian dataset menjadi dua, yaitu data train set dan data test set dengan printah : 
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=0)
+```
+scaled_features = scaler.transform(df.drop('HeartDisease',axis = 1))
+df_feat = pd.DataFrame(scaled_features,columns = df.columns[:-1])
+df_feat.head()
+```
 
 Selanjutnya saya akan membuat sebuah model menggunakan algoritma logisticRegression dengan jumlah iterasi max 5000 dengan perintah : 
 
-model = LogisticRegression(max_iter=5000)
+```
+X = df_feat
+y = df['HeartDisease']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=101)
+```
+
+```
+knn = KNeighborsClassifier(n_neighbors = 9)
+knn.fit(X_train,y_train)
+```
+
+```
+pred = knn.predict(X_test)
+pred
+```
+
+```
+print(confusion_matrix(y_test,pred))
+```
+
+```
+print(classification_report(y_test,pred))
+```
+
+```
+error_rate= []
+for i in range(1,40):
+    knn = KNeighborsClassifier(n_neighbors = i)
+    knn.fit(X_train,y_train)
+    pred_i = knn.predict(X_test)
+    error_rate.append(np.mean(pred_i != y_test))
+```
+
+```
+plt.figure(figsize = (10,6))
+plt.plot(range(1,40),error_rate,color = 'blue',linestyle = '--',marker = 'o',markerfacecolor='red',markersize = 10)
+plt.title('Error Rate vs K')
+plt.xlabel('K')
+plt.ylabel('Error Rate')
+```
+
+![](error.png)
 
 
 Kemudian ditahapan ini saya akan mencoba melakukan prediksi dengan data sample yang paling atas dengan perintah : 
 
-input_data =  np.array([48,	0,	0,	138,	214,	0,	1,	108,	1,	1.5,	1])
 
-input_data_reshaped = input_data.reshape(1,-1)
-prediction = model.predict(input_data_reshaped)
-print(prediction)
-if (prediction[0] == 0) :
-    print("Pasien tidak terindikasi Penyakit jantung")
-else :
-    print("Pasien terindikasi Penyakit jantung") 
+```
+colors = px.colors.cyclical.Twilight
+fig = make_subplots(rows=1,cols=2,
+                    subplot_titles=('Countplot',
+                                    'Percentages'),
+                    specs=[[{"type": "xy"},
+                            {'type':'domain'}]])
+fig.add_trace(go.Bar(y = df['Sex'].value_counts().values.tolist(),
+                      x = df['Sex'].value_counts().index,
+                      text=df['Sex'].value_counts().values.tolist(),
+              textfont=dict(size=15),
+                      textposition = 'outside',
+                      showlegend=False,
+              marker = dict(color = colors,
+                            line_color = 'black',
+                            line_width=3)),row = 1,col = 1)
+fig.add_trace((go.Pie(labels=df['Sex'].value_counts().keys(),
+                             values=df['Sex'].value_counts().values,textfont = dict(size = 16),
+                     hole = .4,
+                     marker=dict(colors=colors),
+                     textinfo='label+percent',
+                     hoverinfo='label')), row = 1, col = 2)
+fig.update_yaxes(range=[0,800])
+#Changing plot & figure background
+fig.update_layout(
+                    paper_bgcolor= '#FFFDE7',
+                    plot_bgcolor= '#FFFDE7',
+                    title=dict(text = "Gender Distribution",x=0.5,y=0.95),
+                    title_font_size=30
+                  )
+iplot(fig)
+```
+
+dengan hasil prediksi sebagai berikut :
+![](gender.png)
 
 
-dengan hasil prediksi sebagai berikut : 
+colors = px.colors.cyclical.Twilight
+fig = make_subplots(rows=1,cols=2,
+                    subplot_titles=('Countplot',
+                                    'Percentages'),
+                    specs=[[{"type": "xy"},
+                            {'type':'domain'}]])
+fig.add_trace(go.Bar(y = df['HeartDisease'].value_counts().values.tolist(),
+                      x = df['HeartDisease'].value_counts().index,
+                      text=df['HeartDisease'].value_counts().values.tolist(),
+              textfont=dict(size=15),
+                      textposition = 'outside',
+                      showlegend=False,
+              marker = dict(color = colors,
+                            line_color = 'black',
+                            line_width=3)),row = 1,col = 1)
+fig.add_trace((go.Pie(labels=df['HeartDisease'].value_counts().keys(),
+                             values=df['HeartDisease'].value_counts().values,textfont = dict(size = 16),
+                     hole = .4,
+                     marker=dict(colors=colors),
+                     textinfo='label+percent',
+                     hoverinfo='label')), row = 1, col = 2)
+fig.update_yaxes(range=[0,550])
+#Changing plot & figure background
+fig.update_layout(
+                    paper_bgcolor= '#FFFDE7',
+                    plot_bgcolor= '#FFFDE7',
+                    title=dict(text = "HeartDisease Distribution",x=0.5,y=0.95),
+                    title_font_size=30
+                  )
+iplot(fig)
+```
+dengan hasil prediksi sebagai berikut :
+
+![](HD.png)
+
+
 
 [1]
 Pasien terkena penyakit penyakit jantungi
