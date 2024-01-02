@@ -305,6 +305,7 @@ dengan hasil prediksi sebagai berikut :
 ![](gender.png)
 
 
+```
 colors = px.colors.cyclical.Twilight
 fig = make_subplots(rows=1,cols=2,
                     subplot_titles=('Countplot',
@@ -338,7 +339,7 @@ iplot(fig)
 ```
 dengan hasil prediksi sebagai berikut :
 
-![](HD.png)
+![](hd.png)
 
 
 
