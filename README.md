@@ -123,31 +123,18 @@ Disini saya akan Menginisialisasi Dataframe dengan perintah :
 
 ```
 df = pd.read_csv('heart-failure-prediction/heart.csv')
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 918 entries, 0 to 917
-Data columns (total 12 columns):
- #   Column          Non-Null Count  Dtype  
----  ------          --------------  -----  
- 0   Age             918 non-null    int64  
- 1   Sex             918 non-null    object 
- 2   ChestPainType   918 non-null    object 
- 3   RestingBP       918 non-null    int64  
- 4   Cholesterol     918 non-null    int64  
- 5   FastingBS       918 non-null    int64  
- 6   RestingECG      918 non-null    object 
- 7   MaxHR           918 non-null    int64  
- 8   ExerciseAngina  918 non-null    object 
- 9   Oldpeak         918 non-null    float64
- 10  ST_Slope        918 non-null    object 
- 11  HeartDisease    918 non-null    int64  
-dtypes: float64(1), int64(6), object(5)
-memory usage: 86.2+ KB
 ```
 
 Kemudian saya akan melihat tipe data yang digunakan setiap kolom nya dengan perintah : 
 
 ```
 df.info()
+```
+
+Dsini Perintah ini digunakan untuk menghasilkan statistik deskriptif dari suatu DataFrame
+
+```
+df.describe()
 ```
 
 ### Pemeriksaan lanjutan 
@@ -164,9 +151,37 @@ Alhasil tidak ada data yang bernilai null dan data terlihat aman, disini saya ak
 
 ![](heatmap.png)
 
+## Visualisasi
+
+Selanjutnya saya melihat hasil visualisasi data yang terkena heart disease dan tidak terkena dengan perintah
+
+Visualisasi data ChestPaintType
+
+```
+sns.countplot(x="ChestPainType", data=df,hue="HeartDisease")
+plt.show()
+```
+
+![](cpt.png)
 
 
 
+Visualisasi data ExerciseAngina
+```
+sns.countplot(x="ExerciseAngina", data=df,hue="HeartDisease")
+plt.show()
+```
+
+![](exer.png)
+
+
+Visualisasi data ExerciseAngina
+```
+sns.countplot(x="FastingBS", data=df,hue="HeartDisease")
+plt.show()
+```
+
+![](fast.png)
 
 
 
