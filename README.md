@@ -5,7 +5,7 @@
 
 ## Domain Proyek
 
-Dijaman sekarang ini banyak masyarakat tidak memperhatikan kesehatan, dikarenakan asik bermain gadget dan memakan makanan yang cepat saji (instan) / bernilai gizi rendah, maka dari itu diperlukan adanya suatu sistem yang dapat memprediksi kesehatan jantung masyarakat dengan mudah dan akurat.
+Proyek ini bertujuan untuk membuat model prediksi penyakit jantung. Model ini bisa membantu tim medis dalam mendiagnosis penyakit jantung.
 
 ## Business Understanding
 
