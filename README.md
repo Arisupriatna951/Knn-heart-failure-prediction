@@ -128,7 +128,7 @@ df.info()
 Selanjutnya saya akan melakukan pengecekan dataframe untuk memastikan tidak ada data yang bernilai null dengan perintah : 
 
 sns.heatmap(df.isnull())
-
+![](heatmap.png)
 
 
 
