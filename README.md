@@ -127,13 +127,15 @@ df.info()
 ### Pemeriksaan lanjutan 
 Selanjutnya saya akan melakukan pengecekan dataframe untuk memastikan tidak ada data yang bernilai null dengan perintah : 
 ```sns.heatmap(df.isnull())```
+
+
 ![](dfnul.png)
-
-
 
 
 Alhasil tidak ada data yang bernilai null dan data terlihat aman, disini saya akan mengecek matrik korelasi nya dengan peritnah : 
 ```sns.heatmap(df.corr(), annot=True)```
+
+
 ![](heatmap.png)
 
 
