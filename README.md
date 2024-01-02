@@ -184,6 +184,25 @@ plt.show()
 ![](fast.png)
 
 
+Visualisasi data ST_Slope
+```
+sns.countplot(x="ST_Slope", data=df,hue="HeartDisease")
+plt.show()
+```
+
+![](st.png)
+
+
+Visualisasi data Sex
+```
+sns.countplot(x="Sex", data=df,hue="HeartDisease")
+plt.show()
+```
+
+![](sex.png)
+
+
+
 
 ## Modeling
 Ditahap ini saya akan membuat feature dari semua kolom dengan perintah berikut : 
