@@ -7,40 +7,31 @@
 
 Dijaman sekarang ini banyak masyarakat tidak memperhatikan kesehatan, dikarenakan asik bermain gadget dan memakan makanan yang cepat saji (instan) / bernilai gizi rendah, maka dari itu diperlukan adanya suatu sistem yang dapat memprediksi kesehatan jantung masyarakat dengan mudah dan akurat.
 
-## Rubrik/Kriteria Tambahan
-Dari latar belakang yang sudah di paparkan, maka dari itu proyek ini dibuat sistem tentang prediksi kesehatan jantung
-
-Menurut hasil survey databoks tahun 2022 Tercatat, perempuan yang mengonsumsi fast food sebanyak satu kali dalam seminggu sebanyak 55,5%, sedangkan pria hanya 44,5%. Lalu, perempuan yang mengonsumsi makanan cepat saji 2-3 kali seminggu mencapai 53,8%, sedangkan laki-laki 46,2%.
-Namun, perempuan yang mengonsumsi fastfood sebanyak 4-5 kali seminggu hanya 29,4%, sisanya laki-laki sebanyak 70,6%. Kemudian, perempuan kembali mendominasi pada intensitas mengonsumsi fastfood sebanyak 6-7 kali seminggu sebanyak 57,1%, sedangkan laki-laki 42,9%.
-  
-  Format Referensi: [Perempuan Lebih Sering Konsumsi Makanan Cepat Saji Ketimbang Laki-laki](https://databoks.katadata.co.id/datapublish/2023/02/16/Perempuan-lebih-sering-konsumsi-makanan-cepat-saji-ketimbang-laki-laki) 
-
 ## Business Understanding
 
 Untuk membantu dan memudahkan team medis dalam mendiagnosis penyakit jantung.
 
 ### Problem Statements
 
-Penyakit jantung ini setiap tahunnya terus meningkat dan menempati peringkat tertinggi penyebab kematian di indonesia terutama pada usia usia produktif, maka dari itu disitem ini bisa memprediksi resiko terkena penyakit jantung
+Untuk membantu tenaga medis dalam penanganan mendiagnosis penyakit jantung dengan menggunakan beberapa inputan inputan gejala yang dirasakan
 
 ### Goals
-
 Tujuan dari proyek ini adalah : 
+- Supaya pencegahan yang dapat dilakukan sebelum terjangkitnya penyakit jantung dengan hasil prediksi.
 - Membantu tim medis dalam mendiagnosis penyakit jantung
-- Membantu masyarakat lebih penduli terhadap kesehatan jantung 
 
 Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
 
-Rubrik/Kriteria Tambahan
+### Rubrik/Kriteria Tambahan
 
     Dengan masyarakat mengetahui kesehatan jantungnya masyakarat akan lebih peduli terhadap pola hidupnya dan ketika diketahui kurang sehat maka diharapkan masyarakat untuk segera melakukan pemerikasaan ke dokter agar tidak tambah parah
 
-###Solution statements
+### Solution statements
   
     Masyarakat nantinya akan diberikan beberapa pertanyaan tentang gejala yang dirasakan saat ini, nantinya aplikasi akan menghitung presentase gejala yang memunuhi dia punya masalah penyakit jantung atau tidak. 
 
 ## Data Understanding
-Dataset "Heart Failure Prediction"ini adalah hasil total data observasi 1190 kali dan di duplikasi sebanyak 272 kali observasi dan final datasetnya : 918 observations
+Dataset "Heart Failure Prediction" adalah data yang didapatkan dari platform kaggle. ini adalah hasil total data observasi 1190 kali dan di duplikasi sebanyak 272 kali observasi dan final datasetnya : 918 observations
 
 [Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction/data).
 
@@ -76,12 +67,12 @@ Dihatap ini saya menggunakan preparation dengan metode Exploratory Data Analysis
 ### Persiapan kerja dengan kaggle
 Disini saya menggunakan google colaboratory, yang dimana saya akan meng upload file kaggle.json yang akan digunakan untuk men download dataset dari kaggle 
 
-from google.colab import files
+```from google.colab import files
 files.upload()
 
 File kaggle.json sudah diupload, langsung saja membuat direktori / folder untuk menyalin file kaggle.json ke direktori tersebut kemudian diupload di filenya
 
-!mkdir -p ~/.kaggle
+```!mkdir -p ~/.kaggle
 !cp kaggle.json ~/.kaggle/
 !chmod 600 ~/.kaggle/kaggle.json
 !ls ~/.kaggle
